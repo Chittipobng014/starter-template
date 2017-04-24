@@ -1,0 +1,126 @@
+<html>
+
+<head>
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="css/materialize.min.css" media="screen,projection">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <style>
+
+    body {
+      display: flex;
+      min-height: 100vh;
+      flex-direction: column;
+    }
+
+    main {
+      flex: 1 0 auto;
+    }
+
+    body {
+      background: #fff;
+    }
+
+    .input-field input[type=date]:focus + label,
+    .input-field input[type=text]:focus + label,
+    .input-field input[type=email]:focus + label,
+    .input-field input[type=password]:focus + label {
+      color: #e91e63;
+    }
+
+    .input-field input[type=date]:focus,
+    .input-field input[type=text]:focus,
+    .input-field input[type=email]:focus,
+    .input-field input[type=password]:focus {
+      border-bottom: 2px solid #e91e63;
+      box-shadow: none;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="section"></div>
+  <main>
+    <center>
+      <img class="responsive-img" style="width: 250px;" src="http://www.sepeb.com/login/image_20170130_125257_118179.jpg" />
+
+      <div class="container">
+
+      <div class="panel panel-default">
+
+        <div class="panel-body">
+          <div class='col s6'>
+          <form class="" action="#" method="post">
+            <div class="form-group">
+              <label for="username">Username</label>
+              <input type="text" class="form-control" id="username" placeholder="">
+            </div>
+
+            </div>
+            <div class='col s6'>
+            <div class="form-group">
+              <label for="passoword">Passowrd</label>
+              <input type="password" class="form-control" id="password" placeholder="">
+
+            </div>
+          </div>
+
+          <div class="col s6 offset-s6">
+            <div class="form-group">
+              <button type="button" id="signin" class="btn btn-primary" name="button">Sign In</button>
+            </div>
+          </div>
+          </form>
+        </div>
+        <div class="panel-footer"></div>
+      </div>
+      <div id="err" style="display:none" class="alert alert-danger alert-dismissable fade in">
+        <a href="#" class="close" data-dismiss="alert" aria-label="close">x</a>
+        <strong>Incorrect username or password</strong>
+        Please check your password.
+      </div>
+      </div>
+    </center>
+
+
+  </main>
+
+  <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+  <!-- Include all compiled plugins (below), or include individual files as needed -->
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+  <script type="text/javascript">
+    $("#signin").click(function() {
+      var url = "http://membershipwebapi977290.azurewebsites.net/api/Members/signin?";
+      url += "username=" + $("#username").val();
+      url += "&password=" + $("#password").val();
+      console.log(url);
+      $.get(url, function(data, status) {
+        console.log(data);
+        if(data == true){
+
+
+        }else{
+          
+          //Goto Sign up
+          $("#err").show();
+          //window.location.href = "signup.html";
+        }
+      });
+    });
+  </script>
+
+
+
+
+
+
+
+
+</body>
+
+
+
+
+
+
+</html>
